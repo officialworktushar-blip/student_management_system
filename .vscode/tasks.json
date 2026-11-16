@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-Wall", "-Wextra", "-std=c11", "-O0", "-g",
+                "-o", "sms.exe",
+                "src/main.c", "src/student.c", "src/storage.c"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "build-tests",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-Wall", "-Wextra", "-std=c11", "-O0", "-g",
+                "-Isrc", "-o", "test_runner.exe",
+                "tests/test_student.c", "src/student.c", "src/storage.c"
+            ],
+            "problemMatcher": ["$gcc"],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "./test_runner.exe",
+            "dependsOn": ["build-tests"],
+            "group": "test",
+            "problemMatcher": []
+        }
+    ]
+}
