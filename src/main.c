@@ -354,8 +354,10 @@ static void menu_result(void)
     for (int i = 0; i < students.count; i++)
         student_calculate_result(&students.items[i]);
 
-    printf("\nResults recalculated for %d student(s).\n", students.count);
-    storage_save(DATA_PATH, &students);
+    printf("\nResults recalculated for %d student(s). Saving...\n",
+           students.count);
+    if (storage_save(DATA_PATH, &students) != STUDENT_OK)
+        printf("Warning: could not save to %s\n", DATA_PATH);
 }
 
 static void menu_sort(void)
