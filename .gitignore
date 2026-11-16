@@ -1,0 +1,8 @@
+# Runtime binary data file (created by the program)
+data/*
+!data/.gitkeep
+
+# Build artifacts
+*.o
+sms
+sms.exe
